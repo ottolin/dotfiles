@@ -5,8 +5,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
-Plug 'Shougo/neocomplete.vim'
-Plug 'lyuts/vim-rtags'
+Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
 
@@ -109,15 +108,6 @@ endif
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" NeoComplete with rtags
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
 function! RtagsJumpToOrDisplay(results, args)
 	let results = a:results
 	let open_opt = a:args['open_opt']
@@ -159,20 +149,6 @@ function! RTagsFindSymbolUnderCursor()
 				\ '--dependency-filter' : fname }
 	call rtags#ExecuteThen(args, [[function('RtagsJumpToOrDisplay'), {'open_opt' : g:SAME_WINDOW}]])
 endfunction
-
-function! SetupNeocomleteForCppWithRtags()
-	" Enable heavy omni completion.
-	setlocal omnifunc=RtagsCompleteFunc
-
-	if !exists('g:neocomplete#sources#omni#input_patterns')
-		let g:neocomplete#sources#omni#input_patterns = {}
-	endif
-	let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-	set completeopt+=longest,menuone
-	noremap <Leader>gd :call RTagsFindSymbolUnderCursor()<CR>
-endfunction
-
-autocmd FileType cpp,c call SetupNeocomleteForCppWithRtags()
 
 " Highlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
