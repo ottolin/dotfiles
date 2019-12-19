@@ -4,8 +4,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'zxqfl/tabnine-vim'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -43,7 +45,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 "Auto indent current scope
 map <F10> ma=i{`a
@@ -157,3 +159,13 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" EsLint and ALE
+let g:ale_sign_error = 'X'
+let g:ale_sign_warning = '!'
+let g:ale_fixers = {
+      \'javascript': ['eslint'],
+      \}
+let g:ale_fix_on_save = 1
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
