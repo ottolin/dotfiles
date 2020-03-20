@@ -1,0 +1,11 @@
+[user]
+	email = ottolin@gmail.com
+	name = Otto Lin
+[alias]
+	st = status
+	tree = log --graph --all --date-order --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	t = log --oneline --graph --decorate --all
+[core]
+	editor = vim
+[push]
+	default = matching
