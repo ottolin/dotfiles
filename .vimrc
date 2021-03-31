@@ -11,6 +11,13 @@ Plug 'w0rp/ale'
 
 call plug#end()
 
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+noremap <Leader>w :call TrimWhitespace()<CR>
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -108,7 +115,7 @@ if executable('ag')
 endif
 
 " bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :Ag <C-R><C-W><CR>
 
 function! RtagsJumpToOrDisplay(results, args)
 	let results = a:results
