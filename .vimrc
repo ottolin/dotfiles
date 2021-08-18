@@ -52,7 +52,10 @@ set incsearch
 set ignorecase
 set smartcase
 
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 "Auto indent current scope
 map <F10> ma=i{`a
