@@ -2,12 +2,16 @@
 	email = ottolin@gmail.com
 	name = Otto Lin
 [alias]
-	st = status
-	tree = log --graph --all --date-order --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	t = log --oneline --graph --decorate --all
+  st = status
+  tree = log --graph --all --date-order --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  t = log --oneline --graph --decorate --all
+  d = diff
+  dc = diff --cached
+  co = checkout
+  b = branch
 [core]
 	editor = vim
 [push]
 	default = matching
 [url "git@github.com:"]
-	insteadOf = https://github.com
+	insteadOf = https://github.com/
