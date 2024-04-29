@@ -1,6 +1,6 @@
 #!/bin/bash
 CUR_DIR=`pwd`
-FILES=( ".gitconfig" ".doom.d" ".spacemacs" ".tmux.conf" ".vimrc" ".nvimrc")
+FILES=( ".gitconfig" ".doom.d" ".spacemacs" ".tmux.conf" ".vimrc" ".nvimrc" ".wezterm.lua")
 #echo $CUR_DIR
 echo "Installing dot files to home directory..."
 cd ~
